@@ -1,0 +1,26 @@
+{
+  "name": "cs359b-oceanfund",
+  "version": "1.0.0",
+  "description": "(short description here)",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dappdevelopment/cs359b-oceanfund.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dappdevelopment/cs359b-oceanfund/issues"
+  },
+  "homepage": "https://github.com/dappdevelopment/cs359b-oceanfund#readme",
+  "devDependencies": {
+    "lite-server": "^2.3.0"
+  }
+}
