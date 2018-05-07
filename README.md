@@ -1,13 +1,13 @@
-# CS359B Project (ADD NAME HERE)
+# CS359B Project: OceanFund
 
-(short description here)
+OceanFund contains investment pools where users can store money. While the investor has their money in, they get an x% interest when someone else liquidates their interest. 
+
+If you enter at time T_0 and leave at time T_1, you will earn (# of investors who liquidated in that time frame) * x% return on your investment. 
 
 ## Technologies used
 
-(Add only the specific technologies you need to use until Midterm)
+Using React, Node, Solidity
 
-* (e.g. solidity, react, node, mysql)
+## Installation intructions
 
-## Istallation intructions
-
-(add simple instructions on how to run the code here)
+TODO
