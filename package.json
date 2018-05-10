@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/dappdevelopment/cs359b-oceanfund#readme",
   "devDependencies": {
-    "lite-server": "^2.3.0"
-  }
+    "lite-server": "^2.3.0",
+    "openzeppelin-solidity": "1.9.0"
+  },
+  "dependencies": {}
 }
