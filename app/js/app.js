@@ -27,54 +27,68 @@ function app() {
         var contractAddress = contractData.networks[networkId].address;
         contract = new web3.eth.Contract(contractData.abi, contractAddress);
     })
-    .then(refreshBalance)
+    .then(refreshPoolTotal)
     .catch(console.error);
 }
 
-function refreshBalance() { // Returns web3's PromiEvent
+function refreshPoolTotal() { 
    // Calling the contract (try with/without declaring view)
-   contract.methods.balanceOf(userAccount).call().then(function (balance) {
-     $('#display').text(balance + " CDT");
+   contract.methods.totalInvestment().call().then(function (total) {
+     $('#display').text(total + " ETH");
      $("#loader").hide();
    });
  }
 
-function transfer(to, amount) {
-    console.log(to, amount)
-    if (!to || !amount) return console.log("Fill in both fields");
-
-    $("#loader").show();
-
-    contract.methods.transfer(to, amount).send({from: userAccount})
-    .then(refreshBalance)
-    .catch(function (e) {
-        $("#loader").hide();
-    });
-}
-
-function mint(amount) {
+function invest(amount) {
     console.log(amount)
-    if (!amount) return console.log("Fill in the amount field");
+    if (!amount) return console.log("Fill in the amount");
 
     $("#loader").show();
+    try {
+        var value = parseFloat(amount);
+        contract.methods.invest(amount).send({from: userAccount, value:web3.toWei(amount, "ether")}})
+        .then(refreshPoolTotal)
+        .catch(function (e) {
+            $("#loader").hide();
+        });
+    } catch (err) {
+        console.log(err);
+    }
+    
+}
 
-    contract.methods.mint(amount).send({from: userAccount})
+function withdraw() {
+    $("#loader").show();
+
+    contract.methods.withdraw().send({from: userAccount})
     .then(refreshBalance)
     .catch(function (e) {
         $("#loader").hide();
     });
 }
 
-$("#mintButton").click(function() {
-    var amount = $("#amount").val();
-    mint(amount);
+function extract() {
+    $("#loader").show();
+
+    contract.methods.extract().send({from: userAccount})
+    .then(refreshBalance)
+    .catch(function (e) {
+        $("#loader").hide();
+    });
+}
+
+$("#extractButton").click(function() {
+    extract();
 });
 
 
-$("#transferButton").click(function() {
-    var toAddress = $("#address").val();
+$("#investButton").click(function() {
     var amount = $("#amount").val();
-    transfer(toAddress, amount);
+    invest(amount);
+});
+
+$("#withdrawButton").click(function() {
+    withdraw();
 });
 
 

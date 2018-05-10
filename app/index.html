@@ -1,23 +1,22 @@
 <html>
   <head>
-      <title>CardinalToken Wallet</title>
-      <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-      <script src="https://dapps.stanford.edu/web3/web3-1.0.0-beta.34.min.js"></script>
-      <script src="js/app.js"></script>
-      <link rel="stylesheet" type="text/css" href="css/app.css">
+      <title>OceanFund</title>
+      <link rel="stylesheet" type="text/css" href="app.css">
    </head>
    <body>
        <div class="container">
-           <h1>CardinalToken Wallet</h1>
+           <h1>OceanFund Pool 0</h1>
            <h2 id="display"></h2>
            <img id="loader" src="https://loading.io/spinners/pacman/lg.eat-bean-pie-loading-gif.gif">
-           <label for="address" class="col-lg-2 control-label">Send to address</label>
-           <input id="address" type="text">
-           <label for="amount" class="col-lg-2 control-label">Amount</label>
+           <label for="amount" class="col-lg-2 control-label">Amount to invest</label>
            <input id="amount" type="text">
-           <button id="transferButton">Give'em</button>
-           <button id="mintButton">Mint</button>
+           <button id="investButton">Invest in Pool</button>
+           <button id="extractButton">Extract</button>
+           <button id="withdrawButton">Withdraw</button>
+           
        </div>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://dapps.stanford.edu/web3/web3-1.0.0-beta.34.min.js"></script>
+      <script src="app.js"></script>
    </body>
 </html>

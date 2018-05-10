@@ -50,21 +50,20 @@ contract OceanFund is Ownable {
             problem at the moment. 
     */
     function calcMaxInvestment() private view returns (uint) {
-    	// No one invested yet. Put in anything you want
-    	if (totalInvestment == 0)
-    		return 2^256 - 1;
+      // No one invested yet. Put in anything you want
+      if (totalInvestment == 0)
+        return 2^256 - 1;
 
       // Can't have more that MAX_INVESTORS investors. 
-      require(investorList.length >= MAX_INVESTORS) 
+      require(investorList.length >= MAX_INVESTORS);
 
-
-  		// Some others have invested. Make sure the pool has enough to pay you back. 
-  		uint remainingPool = SafeMath.sub(totalInvestment, investments[msg.sender]);
-    	uint maxInvestment = (remainingPool * 100) / POOL_FEE;
-    	if (maxInvestment > investments[msg.sender])
-    		return (maxInvestment - investments[msg.sender]);
-    	// You've already put in as much as you could. 
-    	return 0;
+      // Some others have invested. Make sure the pool has enough to pay you back. 
+      uint remainingPool = SafeMath.sub(totalInvestment, investments[msg.sender]);
+      uint maxInvestment = (remainingPool * 100) / POOL_FEE;
+      if (maxInvestment > investments[msg.sender])
+        return (maxInvestment - investments[msg.sender]);
+      // You've already put in as much as you could. 
+      return 0;
     }
 
     
