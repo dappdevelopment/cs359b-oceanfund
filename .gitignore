@@ -58,3 +58,11 @@ typings/
 # dotenv environment variables file
 .env
 
+
+build/contracts/Migrations.json
+
+build/contracts/OceanFund.json
+
+build/contracts/Ownable.json
+
+build/contracts/SafeMath.json

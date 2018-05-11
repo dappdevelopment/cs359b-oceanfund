@@ -29,67 +29,76 @@ function app() {
     })
     .then(refreshPoolTotal)
     .catch(console.error);
-}
 
-function refreshPoolTotal() { 
-   // Calling the contract (try with/without declaring view)
-   contract.methods.totalInvestment().call().then(function (total) {
-     $('#display').text(total + " ETH");
-     $("#loader").hide();
-   });
- }
+    function refreshPoolTotal() { 
+       // Calling the contract (try with/without declaring view)
+       contract.methods.totalInvestment().call().then(function (total) {
+         $('#poolDetails').text(web3.utils.fromWei(total, "ether") + " ETH in the pool");
+         $("#loader").hide();
+       });
 
-function invest(amount) {
-    console.log(amount)
-    if (!amount) return console.log("Fill in the amount");
+       contract.methods.investments(userAccount).call().then(function (total) {
+         $('#investmentDetails').text(web3.utils.fromWei(total, "ether") + " ETH invested");
+         $("#loader").hide();
+       });
 
-    $("#loader").show();
-    try {
-        var value = parseFloat(amount);
-        contract.methods.invest(amount).send({from: userAccount, value:web3.toWei(amount, "ether")}})
+       contract.methods.withdrawAmount(userAccount).call().then(function (total) {
+         $('#withdrawDetails').text(web3.utils.fromWei(total, "ether") + " ETH withdrawable");
+         $("#loader").hide();
+       });
+     }
+
+    function invest(amount) {
+        console.log(amount)
+        if (!amount) return console.log("Fill in the amount");
+
+        $("#loader").show();
+        try {
+            var value = parseFloat(amount);
+            contract.methods.invest().send({from: userAccount, value:web3.utils.toWei(amount, "ether")})
+            .then(refreshPoolTotal)
+            .catch(function (e) {
+                $("#loader").hide();
+            });
+        } catch (err) {
+            console.log(err);
+        }
+        
+    }
+
+    function withdraw() {
+        $("#loader").show();
+
+        contract.methods.withdraw().send({from: userAccount})
         .then(refreshPoolTotal)
         .catch(function (e) {
             $("#loader").hide();
         });
-    } catch (err) {
-        console.log(err);
     }
-    
-}
 
-function withdraw() {
-    $("#loader").show();
+    function extract() {
+        $("#loader").show();
 
-    contract.methods.withdraw().send({from: userAccount})
-    .then(refreshBalance)
-    .catch(function (e) {
-        $("#loader").hide();
+        contract.methods.extract().send({from: userAccount})
+        .then(refreshPoolTotal)
+        .catch(function (e) {
+            $("#loader").hide();
+        });
+    }
+
+    $("#extractButton").click(function() {
+        extract();
+    });
+
+
+    $("#investButton").click(function() {
+        var amount = $("#amount").val();
+        invest(amount);
+    });
+
+    $("#withdrawButton").click(function() {
+        withdraw();
     });
 }
-
-function extract() {
-    $("#loader").show();
-
-    contract.methods.extract().send({from: userAccount})
-    .then(refreshBalance)
-    .catch(function (e) {
-        $("#loader").hide();
-    });
-}
-
-$("#extractButton").click(function() {
-    extract();
-});
-
-
-$("#investButton").click(function() {
-    var amount = $("#amount").val();
-    invest(amount);
-});
-
-$("#withdrawButton").click(function() {
-    withdraw();
-});
-
 
 $(document).ready(app);
