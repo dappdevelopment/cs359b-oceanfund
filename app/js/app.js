@@ -31,39 +31,25 @@ function app() {
     .catch(console.error);
 
     function showPoolDetails(poolId) { 
+        contract.methods.poolName(poolId).call()
+        .then(function (name) {
+            console.log(name);
+            $("#poolDetails1").text('Pool name: ' + name);
+        })
+        
         contract.methods.poolCreator(poolId).call()
         .then(function (creator) {
             console.log(creator)
-            $('#poolDetails1').text(creator);
+            $('#poolDetails2').text('Created by: ' + creator);
         })
-        .then(() => contract.methods.poolName(poolId).call())
-        .then(function (name) {
-            console.log(name);
-            $("poolDetails2").text(name);
-        })
-        .then(() => contract.methods.isActive(poolId).call())
-        .then(function (active) {
-            console.log(active);
-            $("poolDetails3").text(name);
-        })
-        .then(() => contract.methods.totalInvestmentForPool(poolId).call())
+
+        contract.methods.totalInvestmentForPool(poolId).call()
         .then(function (total) {
             console.log(total);
             var amount = web3.utils.fromWei(total, "ether");
             console.log(amount);
-            $("poolDetails4").text(amount);
+            $("#poolDetails3").text('Total amount: ' + amount + ' ETH');
         })
-
-       // Calling the contract (try with/without declaring view)
-       // contract.methods.totalInvestment().call().then(function (total) {
-       //   $('#poolDetails').text(web3.utils.fromWei(total, "ether") + " ETH in the pool");
-       //   $("#loader").hide();
-       // });
-
-       // contract.methods.investments(userAccount).call().then(function (total) {
-       //   $('#investmentDetails').text(web3.utils.fromWei(total, "ether") + " ETH invested");
-       //   $("#loader").hide();
-       // });
 
        contract.methods.withdrawAmount(userAccount).call().then(function (total) {
          $('#withdrawDetails').text(web3.utils.fromWei(total, "ether") + " ETH withdrawable");

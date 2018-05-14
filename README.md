@@ -11,7 +11,7 @@ This will be implemented as a smart contract managing the money for the MVP. Use
 ## Business Model
 A fee will be charged whenever a user creates a new pool. In addition, there is a fee on each investment (around 0.5% commission)
 
-## Beauty
+## Future Plans
 The most beautiful aspect of this is the game theoretic aspect. After multiple mental simulations, the model for this makes this a self-regulating free market, with the only constraints that an investor shouldn't put an absurdly low or high amount. The incentive schemes make it engaging, interactive, lucrative, and balance the investors by pool size (similar to how it would happen in any gambling game like Poker: you wouldn't want to play on a table with other's having disproportionately large or small stakes). 
 
 Future plans: Allowing a variable fee? That would spice things up. Perhaps having pools as FDs where you can lock in your money, and it would be used to finance debt. 

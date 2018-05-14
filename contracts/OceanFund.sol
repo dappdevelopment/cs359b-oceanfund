@@ -46,6 +46,9 @@ contract OceanFund {
         _;
     }
 
+    function getInvestmentByUser(uint poolId, address user) public checkValidPool(poolId) view returns (uint) {
+        return pools[poolId].investments[user];
+    }
 
     function poolCreator(uint poolId) public checkValidPool(poolId) view returns(address) {
         return pools[poolId].creator;
