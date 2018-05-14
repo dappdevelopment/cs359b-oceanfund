@@ -22,8 +22,21 @@
   },
   "homepage": "https://github.com/dappdevelopment/cs359b-oceanfund#readme",
   "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.11",
+    "json-loader": "^0.5.7",
     "lite-server": "^2.3.0",
-    "openzeppelin-solidity": "1.9.0"
+    "openzeppelin-solidity": "1.9.0",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.2.2",
+    "redux": "^4.0.0",
+    "redux-persist": "^5.9.1",
+    "style-loader": "^0.21.0"
   },
   "dependencies": {}
 }
