@@ -159,15 +159,16 @@ contract OceanFund {
     function calcMaxInvestment(uint poolId) private view returns (uint) {
         Pool storage pool = pools[poolId];
 
-        // No one invested yet. Put in anything you want
-        if (pool.totalInvestment == 0)
+        // Can't have more that MAX_INVESTORS investors. 
+        require(pool.investorList.length < pool.maxInvestors);
+
+        // Some others have invested. Make sure the pool has enough to pay you back. 
+        uint remainingPool = SafeMath.sub(pool.totalInvestment, pool.investments[msg.sender]);
+        
+        // No one else invested yet. Put in anything you want
+        if (remainingPool == 0)
             return 2 ** 256 - 1;
-
-      // Can't have more that MAX_INVESTORS investors. 
-      require(pool.investorList.length < pool.maxInvestors);
-
-      // Some others have invested. Make sure the pool has enough to pay you back. 
-      uint remainingPool = SafeMath.sub(pool.totalInvestment, pool.investments[msg.sender]);
+      
       uint maxInvestment = (remainingPool * POOL_DENOMINATION) / pool.poolFee;
       if (maxInvestment > pool.investments[msg.sender])
         return (maxInvestment - pool.investments[msg.sender]);
