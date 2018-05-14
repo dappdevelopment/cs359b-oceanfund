@@ -31,28 +31,27 @@ function app() {
     .catch(console.error);
 
     function showPoolDetails(poolId) { 
-
         contract.methods.poolCreator(poolId).call()
         .then(function (creator) {
             console.log(creator)
-            $('#poolDetails').text(creator);
+            $('#poolDetails1').text(creator);
         })
         .then(() => contract.methods.poolName(poolId).call())
         .then(function (name) {
             console.log(name);
-            $("poolDetails").text(name);
+            $("poolDetails2").text(name);
         })
         .then(() => contract.methods.isActive(poolId).call())
         .then(function (active) {
             console.log(active);
-            $("poolDetails").text(name);
+            $("poolDetails3").text(name);
         })
         .then(() => contract.methods.totalInvestmentForPool(poolId).call())
         .then(function (total) {
             console.log(total);
             var amount = web3.utils.fromWei(total, "ether");
             console.log(amount);
-            $("poolDetails").text(amount);
+            $("poolDetails4").text(amount);
         })
 
        // Calling the contract (try with/without declaring view)

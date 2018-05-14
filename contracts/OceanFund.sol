@@ -1,9 +1,8 @@
 pragma solidity ^0.4.21;
 
-import 'openzeppelin-solidity/contracts/ownership/Ownable.sol';
 import 'openzeppelin-solidity/contracts/math/SafeMath.sol';
 
-contract OceanFund is Ownable {
+contract OceanFund {
     
     struct Pool {   
         // Contains the total amount invested in each pool 
@@ -30,7 +29,7 @@ contract OceanFund is Ownable {
     Pool[] pools;
 
     // The address of the owner of OceanFund
-    address broker;
+    address public broker;
 
     uint BROKER_FEE = 0.001 ether;
     uint CREATION_FEE = 0.01 ether; 
