@@ -27,20 +27,44 @@ function app() {
         var contractAddress = contractData.networks[networkId].address;
         contract = new web3.eth.Contract(contractData.abi, contractAddress);
     })
-    .then(refreshPoolTotal)
+    // .then(refreshPoolTotal)
     .catch(console.error);
 
-    function refreshPoolTotal() { 
-       // Calling the contract (try with/without declaring view)
-       contract.methods.totalInvestment().call().then(function (total) {
-         $('#poolDetails').text(web3.utils.fromWei(total, "ether") + " ETH in the pool");
-         $("#loader").hide();
-       });
+    function showPoolDetails(poolId) { 
 
-       contract.methods.investments(userAccount).call().then(function (total) {
-         $('#investmentDetails').text(web3.utils.fromWei(total, "ether") + " ETH invested");
-         $("#loader").hide();
-       });
+        contract.methods.poolCreator(poolId).call()
+        .then(function (creator) {
+            console.log(creator)
+            $('#poolDetails').text(creator);
+        })
+        .then(() => contract.methods.poolName(poolId).call())
+        .then(function (name) {
+            console.log(name);
+            $("poolDetails").text(name);
+        })
+        .then(() => contract.methods.isActive(poolId).call())
+        .then(function (active) {
+            console.log(active);
+            $("poolDetails").text(name);
+        })
+        .then(() => contract.methods.totalInvestmentForPool(poolId).call())
+        .then(function (total) {
+            console.log(total);
+            var amount = web3.utils.fromWei(total, "ether");
+            console.log(amount);
+            $("poolDetails").text(amount);
+        })
+
+       // Calling the contract (try with/without declaring view)
+       // contract.methods.totalInvestment().call().then(function (total) {
+       //   $('#poolDetails').text(web3.utils.fromWei(total, "ether") + " ETH in the pool");
+       //   $("#loader").hide();
+       // });
+
+       // contract.methods.investments(userAccount).call().then(function (total) {
+       //   $('#investmentDetails').text(web3.utils.fromWei(total, "ether") + " ETH invested");
+       //   $("#loader").hide();
+       // });
 
        contract.methods.withdrawAmount(userAccount).call().then(function (total) {
          $('#withdrawDetails').text(web3.utils.fromWei(total, "ether") + " ETH withdrawable");
@@ -48,56 +72,121 @@ function app() {
        });
      }
 
-    function invest(amount) {
-        console.log(amount)
-        if (!amount) return console.log("Fill in the amount");
+    function invest(poolIdVal, amount) {
+        if (!amount || !poolIdVal) return console.log("Fill in the Pool ID and amount");
 
         $("#loader").show();
         try {
             var value = parseFloat(amount);
-            contract.methods.invest().send({from: userAccount, value:web3.utils.toWei(amount, "ether")})
-            .then(refreshPoolTotal)
+            var poolId = parseInt(poolIdVal)
+            contract.methods.invest(poolId).send({ from: userAccount, value: web3.utils.toWei(amount, "ether") })
             .catch(function (e) {
                 $("#loader").hide();
             });
         } catch (err) {
             console.log(err);
+            $("#loader").hide();
         }
         
     }
 
-    function withdraw() {
-        $("#loader").show();
+    function withdraw(poolIdVal) {
+        if (!poolIdVal) return console.log("Fill in the Pool ID");
 
-        contract.methods.withdraw().send({from: userAccount})
-        .then(refreshPoolTotal)
-        .catch(function (e) {
+        $("#loader").show();
+        try {
+            var poolId = parseInt(poolIdVal)
+            contract.methods.withdraw(poolId).send({ from: userAccount })
+            .catch(function (e) {
+                $("#loader").hide();
+            });
+        } catch (err) {
+            console.log(err);
             $("#loader").hide();
-        });
+        }
     }
 
-    function extract() {
-        $("#loader").show();
+    function extract(poolIdVal) {
+        if (!poolIdVal) return console.log("Fill in the Pool ID");
 
-        contract.methods.extract().send({from: userAccount})
-        .then(refreshPoolTotal)
-        .catch(function (e) {
+        $("#loader").show();
+        try {
+            var poolId = parseInt(poolIdVal)
+            contract.methods.extract(poolId).send({ from: userAccount })
+            .catch(function (e) {
+                $("#loader").hide();
+            });
+        } catch (err) {
+            console.log(err);
             $("#loader").hide();
-        });
+        }
     }
+
+    function createPool(name) {
+        if (!name) return console.log("Fill in the Name field");
+
+        $("#loader").show();
+        try {
+            contract.methods.createPool(10, 100, name).send({ from: userAccount, value: web3.utils.toWei("0.01", "ether") })
+            .catch(function (e) {
+                $("#loader").hide();
+            });
+        } catch (err) {
+            console.log(err);
+            $("#loader").hide();
+        }
+    }
+
+    function closePool(poolIdVal) {
+        if (!poolIdVal) return console.log("Fill in the Pool ID field");
+
+        $("#loader").show();
+        try {
+            var poolId = parseInt(poolIdVal)
+            contract.methods.closePool(poolId).send({ from: userAccount })
+            .catch(function (e) {
+                $("#loader").hide();
+            });
+        } catch (err) {
+            console.log(err);
+            $("#loader").hide();
+        }
+    }
+
+
+
+    
 
     $("#extractButton").click(function() {
-        extract();
+        var poolId = $("#poolId").val();
+        extract(poolId);
     });
 
 
     $("#investButton").click(function() {
         var amount = $("#amount").val();
-        invest(amount);
+        var poolId = $("#poolId").val();
+        invest(poolId, amount);
     });
 
     $("#withdrawButton").click(function() {
-        withdraw();
+        var poolId = $("#poolId").val();
+        withdraw(poolId);
+    });
+
+    $("#createPoolButton").click(function() {
+        var name = $("#name").val();
+        createPool(name);
+    });
+
+    $("#closePoolButton").click(function() {
+        var poolId = $("#poolId").val();
+        closePool(poolId);
+    });
+
+    $("#showDetailsButton").click(function() {
+        var poolId = $("#poolId").val();
+        showPoolDetails(poolId);
     });
 }
 
