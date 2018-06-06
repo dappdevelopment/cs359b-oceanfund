@@ -1,231 +1,87 @@
+<!DOCTYPE html>
 <html>
-  <head>
-      <title>OceanFund</title>
-      <link rel="stylesheet" type="text/css" href="css/app.css">
-      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-      <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue-purple.min.css">
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
-      <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-      <script src="https://dapps.stanford.edu/web3/web3-1.0.0-beta.34.min.js"></script>
-      <script type="application/javascript" src="js/app.js"></script>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   </head>
-    <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
-      <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-        <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
-          <div class="mdl-layout--large-screen-only mdl-layout__header-row">
-          </div>
-          <div class="mdl-layout--large-screen-only mdl-layout__header-row">
-            <h3>OceanFund</h3>
-          </div>
-          <div class="mdl-layout--large-screen-only mdl-layout__header-row">
-          </div>
-          <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
-            <a href="#overview" class="mdl-layout__tab is-active">Overview</a>
-            <a href="#manage" class="mdl-layout__tab">Pool Management</a>
-            <a href="#investments" class="mdl-layout__tab">Investments</a>
-            <!-- <a href="#faq" class="mdl-layout__tab">FAQ</a> -->
-          </div>
-        </header>
-        <main class="mdl-layout__content">
-          <div class="mdl-layout__tab-panel is-active" id="overview">
-            <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-              <div class="mdl-card mdl-cell mdl-cell--12-col">
-                <div class="mdl-card__supporting-text">
-                  <h4>What is OceanFund?</h4>
-                    OceanFund is an investment vehicle where users can stash their extra unused ETH for future returns. The interest rate however, is dynamic and depends on the time for which the money is invested. While you have your invesment deposited in the pool, every time any other user liquidates their funds and extracts their investment from the pool, you get an 0.1% compound interest! 
-                </div>
-              </div>
-            </section>
-            <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-              <div class="mdl-card mdl-cell mdl-cell--12-col">
-                <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
-                  <h4 class="mdl-cell mdl-cell--12-col">Details</h4>
-                  <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
-                    <div class="section__circle-container__circle mdl-color--primary" style="display: block;">
-                      <i class="material-icons" style="font-size:42px; color:white; margin: 11px 11px;">create</i>
-                    </div>
-                  </div>
-                  <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
-                    <h5>Create and Customize your own pools</h5>
-                    Want to create your own investment pool and be the first investor? Create a new pool with your own interest rate and cap on number of investors! <a href="#manage">Create your own pool here.</a>
-                  </div>
-                  <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
-                    <div class="section__circle-container__circle mdl-color--primary" style="display: block;">
-                      <i class="material-icons" style="font-size:48px; color:white; margin: 8px 9px;">attach_money</i>
-                    </div>
-                  </div>
-                  <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
-                    <h5>Invest and wait</h5>
-                    Find an existing pool to invest in and bank in your money! You'll earn interest on it and you can take it out at your convenience. You get rewarded for your patience and investment. <a href="#">Make your first investment.</a>
-                  </div>
-                  <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
-                    <div class="section__circle-container__circle mdl-color--primary" style="display: block;">
-                      <i class="material-icons" style="font-size:48px; color:white; margin: 8px 8px;">trending_up</i>
-                    </div>
-                  </div>
-                  <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
-                    <h5>More coming soon!</h5>
-                    Keep tuned for more. This is being actively developed at <a href='https://github.com/dappdevelopment/cs359b-oceanfund'>OceanFund</a>. You can reach out to us with feedback and suggestions at <a href='mailto:tkothari@stanford.edu'> tkothari@stanford.edu </a>
-                  </div>
-                </div>
-              </div>
-            </section>
-            <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-              <div class="mdl-card mdl-cell mdl-cell--12-col">
-                <div class="mdl-card__supporting-text">
-                  <h4>Technology</h4>
-                  This is currently out for alpha-testing on Rinkeby. We plan to deploy OceanFund on the MainNet by the end of May. Note: This idea isn't completely new: it's economic model is similar to having a Fixed Deposit. Putting in your money for a long fixed period gives you a positive return. If you break your FD before the time period, you are required to pay a fee to the bank. The returns in OceanFund however are dynamic and depend on the dynamics of the whole system.
-                </div>
-              </div>
-            </section>
-            <br /> <br />
-          </div>
-          <div class="mdl-layout__tab-panel" id="manage">
-            <section class="section--center mdl-grid mdl-grid--no-spacing">
-              <div class="mdl-cell mdl-cell--12-col">
-                <h3 id="poolDetails">View pool details</h4>
-                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="text" id="poolDetails-poolId">
-                    <label class="mdl-textfield__label" for="poolDetails-poolId">Pool ID</label>
-                  </div>
-                  <br />
-                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="showDetailsButton">
-                    View details
-                  </button>
-                  <p> </p>
-                  <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-                    <div class="mdl-card mdl-cell mdl-cell--12-col">
-                      <div class="mdl-card__supporting-text">
-                        <h4 id="poolDetails1">&lt;Pool Name&gt;</h4>
-                          <p id="poolDetails2"> &lt;Creator of pool&gt; </p>
-                          <p id="poolDetails3"> &lt;Total ETH Invested&gt; </p>
-                          <p id="investmentDetails"> &lt;Your investment&gt; </p>
-                      </div>
-                    </div>
-                  </section>
-
-                <hr />
-                <h3 id="createPool">Create a new pool</h4>
-                  <p> Give your pool a unique name! </p>
-                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="text" id="createPool-name">
-                    <label class="mdl-textfield__label" for="createPool-name">Your Pool Name</label>
-                  </div>
-                  <br />
-                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="createPoolButton">
-                    Create Pool
-                  </button>
-
-                <hr />
-                <h3 id="closePool">Close an existing pool</h4>
-                  <p> Note: You can only close pools that you have started. </p>
-                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="text" id="closePool-poolId">
-                    <label class="mdl-textfield__label" for="closePool-poolId">Pool ID</label>
-                  </div>
-                  <br />
-                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="closePoolButton">
-                    Close Pool
-                  </button>
-              </div>
-            </section>
-            <section>
-              
-            </section>
-          </div>
-          <div class="mdl-layout__tab-panel" id="investments">
-            <section class="section--center mdl-grid mdl-grid--no-spacing">
-              <div class="mdl-cell mdl-cell--12-col">
-                <h3 id="poolDetails">View pool details</h4>
-                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="text" id="pool1Details-poolId">
-                    <label class="mdl-textfield__label" for="pool1Details-poolId">Pool ID</label>
-                  </div>
-                  <br />
-                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="showDetails1Button">
-                    View details
-                  </button>
-                  <p> </p>
-                  <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-                    <div class="mdl-card mdl-cell mdl-cell--12-col">
-                      <div class="mdl-card__supporting-text">
-                        <h4 id="pool1Details1">&lt;Pool Name&gt;</h4>
-                          <p id="pool1Details2"> &lt;Creator of pool&gt; </p>
-                          <p id="pool1Details3"> &lt;Total ETH Invested&gt; </p>
-                          <p id="investment1Details"> &lt;Your investment&gt; </p>
-                      </div>
-                    </div>
-                  </section>
-
-                <hr />
-                <h3 id="invest">Invest in pool</h4>
-                  <p> Invest in this pool </p>
-                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="text" id="invest-poolId">
-                    <label class="mdl-textfield__label" for="invest-poolId">Pool ID</label>
-                  </div>
-                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="text" id="invest-amount">
-                    <label class="mdl-textfield__label" for="invest-amount">Amount (in ETH)</label>
-                  </div>
-                  <br />
-                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="investButton">
-                    Invest in Pool
-                  </button>
-
-                <hr />
-                <h3 id="extract">Extract from pool</h4>
-                  <p> Liquidate your investment from the pool </p>
-                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="text" id="extract-poolId">
-                    <label class="mdl-textfield__label" for="extract-poolId">Pool ID</label>
-                  </div>
-                  <br />
-                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="extractButton">
-                    Extract Investment
-                  </button>
-
-                <hr />
-                <h3 id="withdraw">Withdraw</h4>
-                  <p> This is the amount of money that you can currently withdraw from the contract. </p>
-                  <p id="withdrawDetails"> &lt;Withdrawable Amount&gt; </p>
-                  <br />
-                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="withdrawButton">
-                    Withdraw
-                  </button>
-              </div>
-            </section>
-            <section>
-              
-            </section>
-          </div>
-        </main>
-      </div>
-    </body>
-       <!-- <div class="container">
-           <h1>OceanFund Pool 0</h1>
-           <h2 id="poolDetails1" class="display"></h2>
-           <h2 id="poolDetails2" class="display"></h2>
-           <h2 id="poolDetails3" class="display"></h2>
-           <h2 id="investmentDetails" class="display"></h2>
-           <h2 id="withdrawDetails" class="display"></h2>
-           <img id="loader" src="https://loading.io/spinners/pacman/lg.eat-bean-pie-loading-gif.gif">
-           <label for="amount" class="col-lg-2 control-label">Amount to invest</label>
-            <input id="amount" type="text">
-           <label for="poolId" class="col-lg-2 control-label">Pool ID</label>
-            <input id="poolId" type="text">
-           <label for="name" class="col-lg-2 control-label">Name</label>
-            <input id="name" type='text'>
-           <button id="createPoolButton">Create Pool</button>
-           <button id="closePoolButton"> Close Pool </button>
-           <button id="investButton">Invest in Pool</button>
-           <button id="extractButton">Extract</button>
-           <button id="withdrawButton">Withdraw</button>
-           <button id="showDetailsButton">Show Pool details</button>
-           
-       </div>
-
-   </body> -->
+<head>
+	<title>OceanFund | Home</title>
+	<link rel="stylesheet" type="text/css" href="css/css.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/jquery-ui.js"></script>
+	<script type="text/javascript" src="js/script.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700" rel="stylesheet">
+</head>
+<body>
+	<header>
+		<a href='index.html'>
+			<div class="one">
+				<img src="img/logo2.png" class="log">
+			</div>
+		</a>
+		<dive class="two">
+			<ul>
+				<li class="focus menu"><a href='index.html'> Home </a></li>
+				<li class="menu">About</li>
+				<li class="menu">Team</li>
+				<li class="end">.</li>
+				<li class="no">
+					<a href='profile.html'>Hey 0xc0ffee...</a>
+				</li>
+				<li class="no2">
+					<a href='profile.html'>
+						<img src="img/profile-icon.png" class="prof">
+					</a>
+				</li>
+			</ul>
+		</dive>
+	</header>
+	<div class="sub">
+		<ul>
+			<li class="noleft"><a href='invest.html'> Browse Pools </a></li>
+			<li>Investments</li>
+			<li class="end">.</li>
+		</ul>
+		<input type="text" name="" class="search" placeholder="Search for Investement Pools">
+	</div>
+	<div class="divisor"></div>
+   <!-- First Division -->
+	<div class="min">
+		<p>OceanFund is an investment vehicle where users can stash their extra unused ETH for future returns. The interest rate however, is <span>dynamic</span> and depends on the time for which the money is invested.</p>
+		<img src="img/side.png" class="side">
+	</div>
+	<!-- Second Division -->
+	<div class="min2">
+		<div class="plu"><img src="img/plus.png" class="plus"></div>
+		<div class="head">Create &amp; Customise Your Own Pools.</div>
+		<p>Want to create your own investement pool and be the first investor? Create a new pool with your own interest rate and cap on number of investors! Create your own pool here.</p>
+		<a href= 'create.html'><div class="button">CREATE YOUR POOL &nbsp;&nbsp;<span>></span></div></a>
+		<img src="img/left.png" class="side2">
+	</div>
+	<!-- Third Division -->
+	<div class="min3">
+	<div class="empty"></div>
+		<div class="plu2"><img src="img/dollar.png" class="plus"></div>
+		<div class="head2">Invest &amp; Wait.</div>
+		<p>Want to create your own investement pool and be the first investor? Create a new pool with your own interest rate and cap on number of investors! Create your own pool here.</p>
+		<a href= 'invest.html'><div class="button2">MAKE AN INVESTMENT &nbsp;&nbsp;<span>></span></div></a>
+		<img src="img/right.png" class="side3">
+	</div>
+	<!-- Fourth Division -->
+		<div class="min4">
+		<div class="plu"><img src="img/up.png" class="plus"></div>
+		<div class="head">More Coming Soon!</div>
+		<p>Keep tuned for more. This is being actively developed at OceanFund. You can reach out to us with feedback and suggestions at tkothari@stanford.edu.</p>
+		<a href= 'https://github.com/dappdevelopment/cs359b-oceanfund'><div class="button3">View Github &nbsp;&nbsp;<span>></span></div></a>
+	</div>
+	<!-- Footer -->
+	<footer>
+		<ul>
+			<li>Privacy &amp; Policy</li>
+			<li>Terms &amp; Conditions</li>
+			<li>FAQ</li>
+		</ul>
+		<div class="rights">&copy; OceanFund, All rights reserved.</div>
+	</footer>
+</body>
 </html>

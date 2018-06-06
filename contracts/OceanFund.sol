@@ -338,7 +338,7 @@ contract OceanFund {
     uint DEFAULT_CONVERSION_RATE = 500; // Number of ocean tokens for ether
     uint MINIMUM_PAYMENT = 0.01 ether; 
 
-    function () public payable { 
+    function buy() public payable { 
         require (msg.value > MINIMUM_PAYMENT);
 
         withdrawAmount[broker] = SafeMath.add(withdrawAmount[broker], msg.value);

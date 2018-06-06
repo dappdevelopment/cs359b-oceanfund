@@ -1,0 +1,228 @@
+.profileHead{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	 background: -webkit-linear-gradient(45deg, #0335FF, #3EBEFF);
+	background: linear-gradient(45deg, #0335FF, #3EBEFF);
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	-webkit-font-smoothing: antialiased;
+	font-family: montserrat;
+	font-size: 22pt;
+	font-weight: 500;
+}
+.main{
+	position: relative;
+	width: 100%;
+	height: 125vh;
+	float: left;
+}
+.panelOne{
+	position: relative;
+	width: 30%;
+	height: 100%;
+	float: left;
+	box-sizing: border-box;
+	text-align: center;
+	border-right: 1px solid #DFECF4;
+}
+.panelTwo{
+	position: relative;
+	width: 70%;
+	height: 100%;
+	float: left;
+	box-sizing: border-box;
+	text-align: center;
+}
+.clip{
+	position: relative;
+	margin-top: 40px;
+	width: 320px;
+	height: 300px;
+	border-radius: 2%;
+}
+.clipHd{
+	position: relative;
+	margin-top: 40px;
+	font-family: montserrat;
+	font-size: 14pt;
+	text-transform: uppercase;
+	opacity: 0.7;
+	color: #434A4E;
+}
+.change{
+	position: relative;
+	margin-top: 30px;
+	font-family: montserrat;
+	font-size: 11pt;
+	cursor: pointer;
+	opacity: 0.8;
+}
+.levelN{
+	position: relative;
+	margin-top: 30px;
+	box-sizing: border-box;
+	width: 100px;
+	padding: 10px;
+	opacity: 0.7;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: #eee;
+	border-radius: 6px;
+	font-family: montserrat;
+	color: #434A4E;
+}
+.basic{
+	position: relative;
+	margin-top: 40px;
+	font-family: montserrat;
+	font-size: 16pt;
+	color: #434A4E; 
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	/*opacity: 0.7;*/
+}
+.bar{
+	position: relative;
+	width: 100%;
+	height: 120px;
+	float: left;
+	text-align: center;
+	margin-top: 30px;
+}
+.bar ul{
+	list-style: none;
+}
+.bar li{
+	position: relative;
+	display: inline-block;
+	width: 30%;
+	height: 100%;
+	box-sizing: border-box;
+	text-align: center;
+}
+.pehla{
+	position: relative;
+	width: 100%;
+	height: 50%;
+	float: left;
+	box-sizing: border-box;
+	padding-top: 30px;
+	text-align: center;
+}
+.doosra{
+	position: relative;
+	width: 100%;
+	height: 50%;
+	float: left;
+	box-sizing: border-box;
+	padding-top: 10px;
+	text-align: center;
+}
+.hed{
+	position: relative;
+	font-size: 14pt;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	color: #434A4E;
+	font-family: montserrat;
+	opacity: 0.5;
+	transform: translateY(-50%);
+}
+.content{
+	position: relative;
+	font-size: 22pt;
+	color: #434A4E;
+	font-family: montserrat;
+}
+.desc{
+	position: relative;
+	top: 20px;
+	font-family: montserrat;
+	font-size: 14pt;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	color: #434A4E;
+	opacity: 0.5;
+	text-align: left;
+	padding-left: 15%;
+}
+.txt{
+	position: relative;
+	margin-top: 50px;
+	font-family: montserrat;
+	font-size: 18pt;
+	text-align: left;
+	padding-left: 15%;
+	width: 80%;
+	line-height: 1.3;
+	color: #434A4E;
+	/*opacity: 0.7;*/
+}
+.txt span{
+	opacity: 0.7;
+}
+.lin{
+	position: relative;
+	margin-top: 30px;
+	width: 100%;
+	height: 1px; 
+	background-color: #DFECF4;
+}
+.table{
+	position: relative;
+	margin-top: 30px;
+}
+.withdrawHead{
+	position: relative;
+	margin-top: 50px;
+	font-family: montserrat;
+	color: #434A4E;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	opacity: 0.7;
+}
+.stored{
+	position: relative;
+	margin-top: 15pt;
+	font-family: montserrat;
+	color: #434A4E;
+	font-size: 22pt;
+}
+.withdrawButton{
+	position: relative;
+	margin: auto;
+	margin-top: 40px;
+	width: 240px;
+	height: 60px;
+	background-color: #40F1DA;
+	line-height: 60px;
+	text-align: center;
+	font-family: open sans;
+	letter-spacing: 1px;
+	color: #fff;
+	font-size: 12pt;
+	border-radius: 6px;
+	cursor: pointer;
+	text-transform: uppercase;
+	font-weight: 600;
+}
+.withdrawButton span{
+	font-family: raleway;
+	opacity: 0.5;
+	font-size: 16pt;
+}
+.insert{
+	position: relative;
+	width: 25%;
+	height: 60px;
+	font-size: 22pt;
+	color: #434A4E;
+	border: none;
+	outline: none;
+	margin-left: 40px;
+	border-bottom: 1px solid #434A4E;
+	margin-top: 10px;
+}

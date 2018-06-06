@@ -1,0 +1,300 @@
+.profileHead{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	 background: -webkit-linear-gradient(45deg, #0335FF, #3EBEFF);
+	background: linear-gradient(45deg, #0335FF, #3EBEFF);
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	-webkit-font-smoothing: antialiased;
+	font-family: montserrat;
+	font-size: 22pt;
+	font-weight: 500;
+}
+.main{
+	position: relative;
+	width: 100%;
+	height: 150vh;
+	float: left;
+}
+.panelOne{
+	position: relative;
+	width: 30%;
+	height: 100%;
+	float: left;
+	box-sizing: border-box;
+	text-align: center;
+	border-right: 1px solid #DFECF4;
+}
+.panelTwo{
+	position: relative;
+	width: 70%;
+	height: 100%;
+	float: left;
+	box-sizing: border-box;
+}
+.name{
+	position: relative;
+	margin-top: 40px;
+	font-family: montserrat;
+	font-size: 22pt;
+	color: #434A4E;
+}
+.encode{
+	position: relative;
+	margin-top: 15px;
+	font-family: montserrat;
+	font-size: 8.5pt;
+	color: #434A4E;
+	opacity: 0.5;
+}
+.profDp{
+	position: relative;
+	margin-top: 15pt;
+	width: 50%;
+	border-radius: 100%;
+}
+.change{
+	position: relative;
+	margin-top: 10px;
+	font-family: montserrat;
+	font-size: 8.5pt;
+	color: #434A4E;
+	opacity: 0.5;
+}
+.withdrawHead{
+	position: relative;
+	margin-top: 50px;
+	font-family: montserrat;
+	color: #434A4E;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	opacity: 0.7;
+}
+.stored{
+	position: relative;
+	margin-top: 15pt;
+	font-family: montserrat;
+	color: #434A4E;
+	font-size: 22pt;
+}
+.withdrawButton{
+	position: relative;
+	margin: auto;
+	margin-top: 40px;
+	width: 240px;
+	height: 60px;
+	background-color: #40F1DA;
+	line-height: 60px;
+	text-align: center;
+	font-family: open sans;
+	letter-spacing: 1px;
+	color: #fff;
+	font-size: 12pt;
+	border-radius: 6px;
+	cursor: pointer;
+	text-transform: uppercase;
+	font-weight: 600;
+}
+.withdrawButton span{
+	font-family: raleway;
+	opacity: 0.5;
+	font-size: 16pt;
+}
+.firstDiv{
+	position: relative;
+	width: 100%;
+	height: 30%;
+	border-bottom: 1px solid #DFECF4;
+	float: left;
+	box-sizing: border-box;
+	text-align: center;
+}
+.secondDiv{
+	position: relative;
+	width: 100%;
+	height: 70%;
+	float: left;
+	box-sizing: border-box;
+	text-align: center;
+}
+.yourPool{
+	position: relative;
+	font-family: montserrat;
+	margin-top: 40px;
+	color: #434A4E;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	opacity: 0.7;
+	font-weight: 500;
+}
+.nonePool{
+	position: relative;
+	margin-top: 40px;
+	font-family: montserrat;
+	font-size: 22pt;
+	color: #434A4E;
+}
+.makePool{
+	position: relative;
+	margin: auto;
+	margin-top: 35px;
+	width: 290px;
+	height: 60px;
+	background-color: #135CF8;
+	line-height: 60px;
+	text-align: center;
+	font-family: open sans;
+	letter-spacing: 1px;
+	color: #fff;
+	font-size: 12pt;
+	border-radius: 6px;
+	cursor: pointer;
+	font-weight: 600;
+}
+.mkaePool span{
+	font-family: raleway;
+	opacity: 0.5;
+	font-size: 16pt;
+}
+.containerCard{
+	position: absolute;
+	/*left: 50%;*/
+	top: 55%;
+	transform: translateY(-50%);
+	width: auto;
+	box-sizing: border-box;
+	height: auto;	
+}
+.containerCard ul{
+	list-style: none;
+	padding-left: 155px;
+}
+.containerCard li{
+	position: relative;
+	display: inline-block;
+	float: left;
+	margin-right: 20px;
+	height: 400px;
+	width: 285px;
+	box-sizing: border-box;
+	border: 1px solid #DFECF4;
+	border-radius: 8px;
+	cursor: pointer;
+}
+.pehla{
+	position: relative;
+	width: 100%;
+	height: 55%;
+	float: left;
+	background: url(../img/ocean.jpg) center center no-repeat;
+	/*background-size: cover;*/
+	box-sizing: border-box;
+}
+.doosra{
+	position: relative;
+	width: 100%;
+	height: 45%;
+	float: left;
+	box-sizing: border-box;
+	text-align: left;
+}
+.numDiv{
+	position: relative;
+	width: 100%;
+	height: 50px;
+	border-bottom: 1px solid #DFECF4;
+	float: left;
+	box-sizing: border-box;
+	padding-left: 20px;
+	font-family: montserrat;
+	font-size: 17pt;
+	color: #2D98FF;
+	font-weight: 500;
+	text-transform: uppercase;
+	line-height: 50px;
+	text-align: left;
+}
+.lvl{
+	position: absolute;
+	right: 20px;
+	top: 50%;
+	transform: translateY(-50%);
+	font-family: montserrat;
+	color: #434A4E;
+	opacity: 0.5;
+	text-transform: uppercase;
+	font-size: 10pt;
+}
+.ci{
+	position: relative;
+	top: 15px;
+	font-family: montserrat;
+	color: #434A4E;
+	padding-left: 30px;
+	font-size: 10.8pt;
+}
+.inf{
+	position: relative;
+	top: 25px;
+	font-family: montserrat;
+	color: #434A4E;
+	padding-left: 30px;
+	font-size: 10.8pt;
+}
+.inff{
+	position: relative;
+	top: 35px;
+	font-family: montserrat;
+	color: #434A4E;
+	padding-left: 30px;
+	font-size: 10pt;
+}
+.enco{
+	position: relative;
+	margin-top: 45px;
+	width: 100%;
+	height: 30px;
+	border-top: 1px solid #DFECF4;
+	float: left;
+	line-height: 30px;
+	font-family: montserrat;
+	color: #434A4E;
+	opacity: 0.5;
+	font-size: 9.5pt;
+	text-align: center;
+}
+.pehla2{
+	position: relative;
+	width: 100%;
+	height: 55%;
+	float: left;
+	background: url(../img/cave.jpg) center center no-repeat;
+	/*background-size: cover;*/
+	box-sizing: border-box;
+}
+.makeInv{
+	position: absolute;
+	width: 290px;
+	height: 60px;
+	background-color: #F8BE4C;
+	line-height: 60px;
+	text-align: center;
+	font-family: open sans;
+	letter-spacing: 1px;
+	color: #fff;
+	font-size: 12pt;
+	border-radius: 6px;
+	cursor: pointer;
+	font-weight: 600;
+	bottom: 25px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+.makeInv span{
+	font-family: raleway;
+	opacity: 0.5;
+	font-size: 16pt;
+}

@@ -1,0 +1,180 @@
+.investHead{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	 background: -webkit-linear-gradient(45deg, #0335FF, #3EBEFF);
+	background: linear-gradient(45deg, #0335FF, #3EBEFF);
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	-webkit-font-smoothing: antialiased;
+	font-family: montserrat;
+	font-size: 22pt;
+	font-weight: 500;
+}
+.main{
+	position: relative;
+	width: 100%;
+	height: 90vh;
+	float: left;
+}
+.panelOne{
+	position: relative;
+	width: 100%;
+	height: 20%;
+	float: left;
+}
+.panelTwo{
+	position: relative;
+	width: 100%;
+	height: 80%;
+	float: left;	
+	text-align: center;
+}
+.container{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	width: auto;
+	height: auto;
+}
+.panelTwo ul{
+	list-style: none;
+}
+.panelTwo li{
+	position: relative;
+	display: inline-block;
+	width: 285px;
+	height: 400px;
+	margin-right: 20px;
+	box-sizing: border-box;
+	border: 1px solid #DFECF4;
+	margin-top: 20px;
+	cursor: pointer;
+	border-radius: 10px;
+}
+.noRght{
+	margin-right: none !important;
+}
+.pehla{
+	position: relative;
+	width: 100%;
+	height: 55%;
+	float: left;
+	background: url(../img/ocean.jpg) center center no-repeat;
+	/*background-size: cover;*/
+	box-sizing: border-box;
+}
+.doosra{
+	position: relative;
+	width: 100%;
+	height: 45%;
+	float: left;
+	box-sizing: border-box;
+	text-align: left;
+}
+.numDiv{
+	position: relative;
+	width: 100%;
+	height: 50px;
+	border-bottom: 1px solid #DFECF4;
+	float: left;
+	box-sizing: border-box;
+	padding-left: 20px;
+	font-family: montserrat;
+	font-size: 17pt;
+	color: #2D98FF;
+	font-weight: 500;
+	text-transform: uppercase;
+	line-height: 50px;
+	text-align: left;
+}
+.lvl{
+	position: absolute;
+	right: 20px;
+	top: 50%;
+	transform: translateY(-50%);
+	font-family: montserrat;
+	color: #434A4E;
+	opacity: 0.5;
+	text-transform: uppercase;
+	font-size: 10pt;
+}
+.ci{
+	position: relative;
+	top: 15px;
+	font-family: montserrat;
+	color: #434A4E;
+	padding-left: 30px;
+	font-size: 10.8pt;
+}
+.inf{
+	position: relative;
+	top: 25px;
+	font-family: montserrat;
+	color: #434A4E;
+	padding-left: 30px;
+	font-size: 10.8pt;
+}
+.inff{
+	position: relative;
+	top: 35px;
+	font-family: montserrat;
+	color: #434A4E;
+	padding-left: 30px;
+	font-size: 10pt;
+}
+.enco{
+	position: relative;
+	margin-top: 45px;
+	width: 100%;
+	height: 30px;
+	border-top: 1px solid #DFECF4;
+	float: left;
+	line-height: 30px;
+	font-family: montserrat;
+	color: #434A4E;
+	opacity: 0.5;
+	font-size: 8.5pt;
+	text-align: center;
+}
+.pehla2{
+	position: relative;
+	width: 100%;
+	height: 55%;
+	float: left;
+	background: url(../img/cave.jpg) center center no-repeat;
+	/*background-size: cover;*/
+	box-sizing: border-box;
+}
+.pehla3{
+	position: relative;
+	width: 100%;
+	height: 55%;
+	float: left;
+	background: url(../img/land.jpg) center center no-repeat;
+	/*background-size: cover;*/
+	box-sizing: border-box;
+}
+.abs{
+	position: absolute;
+	left: 5%;
+	top: 40%;
+	transform: translateY(-50%);
+	font-family: montserrat;
+	font-size: 25pt;
+	color: #434A4E;
+	opacity: 0.5;
+}
+.abs2{
+	position: absolute;
+	right: 5%;
+	top: 40%;
+	transform: translateY(-50%);
+	font-family: montserrat;
+	font-size: 25pt;
+	color: #434A4E;
+	opacity: 0.5;
+}
