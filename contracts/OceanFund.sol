@@ -46,11 +46,12 @@ library SafeMath {
   }
 }
 
-
-
-
 contract OceanFund {
     
+    uint BASE_CONVERSION_RATE = 1000; 
+    uint FINAL_CONVERSION_RATE = 500; 
+    uint CREATOR_CONVERSION_RATE = 200; 
+
     struct Pool {   
         // Contains the total amount invested in each pool 
         uint totalInvestment;
@@ -59,10 +60,16 @@ contract OceanFund {
         bool active;
         uint poolFee; // * 0.01% is the interest per liquidation
         uint maxInvestors;
+        uint level;
 
         // Contains the list of investors in each pool 
         address[] investorList;
         string name;
+
+        // Controls conversion rate 
+        uint conversionRate; 
+        uint inflation;
+        uint minConversionRate;
 
         // Contains the investments by an investor into a particular pool 
         mapping (address => uint) investments;
@@ -79,8 +86,13 @@ contract OceanFund {
     address public broker;
 
     uint BROKER_FEE = 0.001 ether;
-    uint CREATION_FEE = 0.01 ether; 
     uint POOL_DENOMINATION = 10000;
+    uint COMMISSION_DENOM = 500; 
+
+    mapping (address => uint) public oceanTokensMap;
+    uint public totalOceanTokens;
+
+    mapping (address => uint) public levelForAddress; 
 
     constructor() public {
         broker = msg.sender;
@@ -113,15 +125,27 @@ contract OceanFund {
         return pools[poolId].active;
     } 
 
+    uint BASE_CREATION_FEE = 5; 
+    uint MULT_CREATION_FEE = 5;
 
-    function createPool(uint poolFee, uint maxInvestors, string name) public payable returns (uint) {
-        require (msg.value >= CREATION_FEE);
+
+    function createPool(uint poolFee, uint maxInvestors, string name, uint level) public returns (uint) {
+        // levelForAddress <= 50 so level <= 50
+        require (levelForAddress[msg.sender] >= level);
+
+        uint tokensNeeded = BASE_CREATION_FEE;
+        for (uint i = 0; i < level; i++) {
+            tokensNeeded = SafeMath.mul(tokensNeeded, MULT_CREATION_FEE);
+        }
+
+        require (oceanTokensMap[msg.sender] >= tokensNeeded);
+        oceanTokensMap[msg.sender] = SafeMath.sub(oceanTokensMap[msg.sender], tokensNeeded);
+        totalOceanTokens = SafeMath.sub(totalOceanTokens, tokensNeeded);
+        
         // Initialize pool
-        Pool memory pool = Pool(0, msg.sender, true, poolFee, maxInvestors, new address[](0), name);
-
-        // Manage balances
-        withdrawAmount[broker] = SafeMath.add(withdrawAmount[broker], CREATION_FEE);
-        withdrawAmount[msg.sender] = SafeMath.add(withdrawAmount[msg.sender], SafeMath.sub(msg.value, CREATION_FEE));
+        Pool memory pool = Pool(0, msg.sender, true, poolFee, maxInvestors, level, 
+                                new address[](0), name, DEFAULT_CONVERSION_RATE, 
+                                FINAL_CONVERSION_RATE, 10);
 
         // Add to pools. Note: The id that we return from this function are 0-indexed. 
         return pools.push(pool) - 1;
@@ -193,11 +217,24 @@ contract OceanFund {
         
         require (amount <= calcMaxInvestment(poolId));
 
+        // Mint tokens for the customer
         Pool storage pool = pools[poolId];
         withdrawAmount[broker] = SafeMath.add(withdrawAmount[broker], BROKER_FEE);
         pool.investments[investor] = SafeMath.add(pool.investments[investor], amount);
         pool.totalInvestment = SafeMath.add(pool.totalInvestment, amount);
         
+        // Mint tokens for the user
+        uint tokensNeeded = (amount * pool.conversionRate) / (1 ether);
+        oceanTokensMap[msg.sender] = SafeMath.add(oceanTokensMap[msg.sender], tokensNeeded);
+        totalOceanTokens = SafeMath.add(totalOceanTokens, tokensNeeded);
+
+        // Mint tokens for the creator
+        uint tokensMinted = (amount * CREATOR_CONVERSION_RATE) / (1 ether);
+        oceanTokensMap[pool.creator] = SafeMath.add(oceanTokensMap[pool.creator], tokensMinted);
+        totalOceanTokens = SafeMath.add(totalOceanTokens, tokensMinted);
+
+
+
         // Only adds investor to this map if they aren't in yet. 
         if (pool.investorMap[investor] == 0) {
             pool.investorMap[investor] = 1;
@@ -214,6 +251,7 @@ contract OceanFund {
         Pool storage pool = pools[poolId];
         uint remainingPool = pool.totalInvestment - pool.investments[investor];
         uint fee = (remainingPool * pool.poolFee) / POOL_DENOMINATION;
+        fee += pool.investments[investor] / COMMISSION_DENOM;
         return fee;
     }
 
@@ -241,6 +279,7 @@ contract OceanFund {
         // accurate representation of the pool details. 
         pool.totalInvestment = SafeMath.add(pool.totalInvestment, SafeMath.sub(fee, moneyLeft));
 
+        // This includes the commission to be paid.
         // Since we are doing division, there is a chance there might be excess funds left 
         // which are unaccounted for. 
         withdrawAmount[broker] = SafeMath.add(withdrawAmount[broker], moneyLeft);
@@ -260,11 +299,20 @@ contract OceanFund {
 
         Pool storage pool = pools[poolId];
 
-        // Calculate the total amount of money investor has in this Pool
-        withdrawAmount[investor] = SafeMath.add(pool.investments[investor], withdrawAmount[investor]);
-
         // Can't take out money if you don't have enough to pay everybody else
-        require(withdrawAmount[investor] >= fee);
+        require(pool.investments[investor] >= fee);
+
+        if (pool.conversionRate > pool.minConversionRate) {
+            pool.conversionRate -= pool.inflation;
+        }
+
+        uint tokensNeeded = ((pool.investments[investor] - fee) * pool.conversionRate) / (1 ether);
+        require (oceanTokensMap[msg.sender] >= tokensNeeded);
+        oceanTokensMap[msg.sender] = SafeMath.sub(oceanTokensMap[msg.sender], tokensNeeded);
+        totalOceanTokens = SafeMath.sub(totalOceanTokens, tokensNeeded);
+
+        // Calculate the total amount of money investor has in this Pool
+        withdrawAmount[investor] = SafeMath.add(withdrawAmount[investor], pool.investments[investor]);
 
         // Since this money is extracted, remove it from the pool funds
         pool.totalInvestment = SafeMath.sub(pool.totalInvestment, pool.investments[investor]);
@@ -285,5 +333,32 @@ contract OceanFund {
         uint amount = withdrawAmount[msg.sender];
         withdrawAmount[msg.sender] = 0;
         msg.sender.transfer(amount);
+    }
+
+    uint DEFAULT_CONVERSION_RATE = 500; // Number of ocean tokens for ether
+    uint MINIMUM_PAYMENT = 0.01 ether; 
+
+    function () public payable { 
+        require (msg.value > MINIMUM_PAYMENT);
+
+        withdrawAmount[broker] = SafeMath.add(withdrawAmount[broker], msg.value);
+        uint newTokens = (DEFAULT_CONVERSION_RATE * msg.value) / (1 ether);
+        totalOceanTokens = SafeMath.add(totalOceanTokens, newTokens);
+        oceanTokensMap[msg.sender] = SafeMath.add(oceanTokensMap[msg.sender], newTokens);
+    }
+
+    function upgradeLevel() public {
+        require (levelForAddress[msg.sender] < 50);
+
+        uint neededTokens = 1;
+        for (uint i = 0; i < levelForAddress[msg.sender]; i++) {
+            neededTokens = SafeMath.mul(neededTokens, 10);
+        }
+
+        require (oceanTokensMap[msg.sender] >= neededTokens);
+
+        oceanTokensMap[msg.sender] = SafeMath.sub(oceanTokensMap[msg.sender], neededTokens);
+        totalOceanTokens = SafeMath.sub(totalOceanTokens, neededTokens);
+        levelForAddress[msg.sender]++;
     }
 }
