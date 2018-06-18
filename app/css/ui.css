@@ -1,0 +1,355 @@
+/*********************************************
+
+	ui.css
+	> Contains global classes used throughout the website (ex. The main header)
+	> All global classes are prefixed with "ui-" to avoid conflicts 
+
+*********************************************/
+
+*{
+	padding: 0px;
+	margin: 0px;
+	font-family: Montserrat;
+	text-decoration: none;
+	color: #252324;
+}
+
+
+html, body{
+	height: 100%;
+}
+
+body{
+	background-color: #fdfeff;
+}
+
+a{
+	cursor: pointer;
+}
+
+::placeholder {
+    color: #bdd1dc;
+    opacity: 1;
+}
+
+:-ms-input-placeholder {
+    color: #bdd1dc;
+}
+
+::-ms-input-placeholder {
+    color: #bdd1dc;
+}
+
+.ui-header, .ui-sub-header{
+	position: relative;
+	height: 90px;
+	box-shadow: 0px 2px 2px 0px rgba(10,10,10,0.1);
+}
+
+.ui-header{
+	text-align: right;
+	z-index: 2;
+}
+
+.ui-header-logo{
+	position: absolute;
+	height: 32%;
+	top: 34%;
+	left: 30px;
+}
+
+.ui-header-nav, .ui-header-user-token, .ui-header-user-image, .ui-header-notif, .ui-sub-header-nav, .ui-sub-header-menu-item, .ui-sub-header-head{
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.ui-header-nav{
+	height: 90px;
+	display: inline-block;
+	width: 300px;
+	z-index: 3;	
+	text-align: center;
+}
+
+.ui-header-menu-item{
+	display: inline-block;
+	font-family: PT sans narrow;
+	font-size: 11.4pt;
+	font-weight: 400;
+	text-transform: uppercase;
+	height: 90px;
+	line-height: 90px;
+	margin-left: 22px;
+	margin-right: 22px;
+	color: #a7b5be;
+	text-decoration: none;
+	transition: color 0.3s;
+}
+
+.ui-header-menu-item:hover{
+	color: #444;
+}
+
+.ui-header-active-menu-item{
+	color: #333;
+	height: 88px;
+	border-bottom: 2px solid #f4bb4e;
+}
+
+.ui-header-user-token{
+	height: 90px;
+	line-height: 90px;
+	width: 45px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-family: PT Sans;
+	font-size: 10pt;
+	color: #666;
+	text-decoration: underline;
+	margin-right: 30px;
+	margin-left: 20px;
+}
+
+.ui-header-user-image{
+	height: 28px;
+	width: 28px;
+	border-radius: 100%;
+	margin-right: 12px;	
+}
+
+
+.ui-header-notif{
+	position: relative;
+	height: 17px;
+	width: 17px;		
+	top: 2px;
+	margin-right: 35px;
+	background-image: url("../img/notif.png");
+	background-size: 80% 80%;
+	background-position: 10% 10%;
+	background-repeat: no-repeat;
+}
+
+.ui-sub-header-nav, .ui-sub-header-menu-item{
+	height: 90px;
+	line-height: 90px;
+	z-index: 2;
+} 
+
+.ui-sub-header-nav{
+	/*background-color: red;*/
+	position: relative;
+	width: 300px;
+	left: 25px;
+}
+
+.ui-sub-header-menu-item{
+	/*background-color: green;*/
+	margin-left: 15px;
+	font-size: 10pt;
+	font-weight: 500;
+	color: #8b9aa4;
+}
+
+.ui-sub-header-active-menu-item{
+	color: #444;
+	font-weight: 600;
+}
+
+.ui-sub-header-head{
+	font-family: PT Sans;
+	position: absolute;
+	width: 100%;
+	height: 90px;
+	line-height: 90px;
+	text-align: center;
+	left: 0px;
+	top: 0px;
+	font-weight: 400;
+	font-size: 22pt;
+	color: #50565a;
+}
+
+
+.ui-text-input{
+	background-color: transparent;
+	border: none;
+	height: 34px;
+	font-size: 12pt;
+	padding-left: 3px;
+	padding-right: 3px;
+	border-bottom: 1px solid #bcc7cd;
+	color: #3e3e3e;
+	outline: none;
+}
+
+.ui-btn{
+	height: 50px;
+	min-width: 230px;
+	border: none;
+	background-color: #145cf9;
+	padding-left: 20px;
+	padding-right: 20px;
+	text-transform: uppercase;
+	color: #fff;
+	font-weight: 400;
+	font-size: 9.2pt;
+	letter-spacing: 1px;
+	border-radius: 3px;
+	cursor: pointer;
+	outline: none;
+}
+
+.ui-btn img{
+	height: 24%;
+	top: -1px;
+	margin-left: 8px;
+	vertical-align: middle;
+	position: relative;
+}
+
+.ui-btn-green{
+	background-color: #3dd6c1;
+}
+
+.ui-btn-yellow{
+	background-color: #f9bc45;
+}
+
+.ui-footer{
+	height: 90px;
+	width: 100%;
+	border-top: 2px solid #ddebf3;
+}
+
+.ui-footer-nav, .ui-footer-menu-item, .ui-footer-copy{
+	display: inline-block;
+	height: 90px;
+	line-height: 90px;
+	vertical-align: top;
+}
+
+.ui-footer-nav{
+	width: 400px;
+	text-align: center;	
+}
+
+.ui-footer-menu-item{
+	font-size: 9pt;
+	color: #bbc7cc;
+	margin-left: 12px;
+	margin-right: 12px;
+	transition: color 0.3s;
+}
+
+.ui-footer-menu-item:hover{
+	color: #444;
+}
+
+.ui-footer-copy{
+	width: 280px;
+	position: absolute;
+	right: 40px;
+	font-size: 9pt;
+	color: #bbc7cc;
+	text-align: center;
+}
+
+.ui-text-banner{
+	padding-left: 60px;
+	padding-right: 60px;
+	padding-top: 40px;
+	padding-bottom: 50px;
+	text-align: center;
+	font-size: 16pt;
+	line-height: 33px;
+	border-bottom: 2px solid #e4f0f7;
+}
+.ui-pool{
+	position: relative;
+	height: 335px;
+	width: 260px;
+	border-radius: 4px;
+	background-color: #fff;
+	box-shadow: 0px 4px 6px 0px rgba(10,10,10,0.05);
+	text-align: left;
+}
+
+.ui-pool-image{
+	height: 160px;
+	width: 100%;
+	background-image: url("../img/defaultBillboard.png"); 
+	background-size: cover;
+}
+
+.ui-pool-name{
+	padding-left: 10px;
+	padding-right: 80px;
+	text-align: left;
+	font-size: 15pt;
+	font-weight: 600;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	color: #6ab4dc;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	border-bottom: 1px solid #e8f1f7; 
+}
+
+.ui-pool-level{
+	position: absolute;
+	width: 55px;
+	height: 22px;
+	line-height: 22px;
+	color: #fff;
+	text-align: center;
+	padding-left: 6px;
+	padding-right: 6px;
+	font-size: 9pt;
+	border-radius: 4px;
+	background-color: #baceda;
+	right: 10px;
+	top: 191px;
+}
+
+.ui-pool-icon, .ui-pool-info{
+	vertical-align: top;
+	display: inline-block;
+	margin-left: 10px;
+	position: relative;
+	top: 15px;
+	margin-top: 4px;
+	font-family: PT Sans Narrow;
+	font-size: 11pt;
+	height: 20px;
+	width: 200px; 
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.ui-pool-icon{
+	height: 14px;
+	width: 14px;
+}
+
+.ui-pool-info{
+	top: 13px;
+}
+
+.ui-pool-id{
+	position: relative;;
+	text-align: center;
+	padding-left: 10px;
+	padding-right: 10px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	font-family: PT Sans Narrow;
+	font-size: 9pt;
+	color: #c3d5e0;
+	text-decoration: underline;
+	border-top: 1px dashed #e7f1f7;
+
+	height: 30px;
+	line-height: 37px;
+	top: 20px;	
+}

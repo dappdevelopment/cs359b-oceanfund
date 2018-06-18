@@ -1,0 +1,168 @@
+.left-panel, .right-panel{
+	position: relative;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.left-panel{
+	width: 28%;
+	margin-left: -2px;
+}
+
+.right-panel{
+	border-left: 2px solid #e4f0f7;
+	padding-bottom: 55px;
+	width: 72%;
+	text-align: center;
+	text-align: center;
+}
+
+
+.pool-image{
+	display: block;
+	position: relative;
+	width: 70%;
+	margin: auto;
+	margin-top: 30px;
+}
+
+.pool-image-name{
+	display: block;	
+	text-align: center;
+	font-weight: 400;
+	font-size: 9pt;
+	color: #9fabb3;
+	text-decoration: underline;	
+	margin: auto;
+	margin-top: 10px;
+	cursor: pointer;
+	transition: color 0.3s;
+	width: 90%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.pool-level{
+	display: block;
+	position: relative;
+	margin: auto;
+	width: 55px;
+	height: 35px;
+	line-height: 35px;
+	margin-top: 20px;
+	color: #fff;
+	text-align: center;
+	padding-left: 8px;
+	padding-right: 8px;
+	font-size: 9pt;
+	border-radius: 3px;
+	background-color: #a6b5bf;
+}
+
+.pool-sub-head{
+	color: #a4adb3;
+	font-size: 10pt;
+	font-weight: 500;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	text-align: center;
+	overflow: hidden;
+	margin-top: 35px;
+	text-overflow: ellipsis;	
+}
+
+#pattern-head{
+	margin-top: 24px;
+	padding-top: 24px;
+	border-top: 1px solid #dceaf3;
+}
+
+
+.pool-details{
+	display: inline-block;
+	vertical-align: top;
+	width: 33%;	
+	margin-top: 30px;
+	position: relative;
+}
+
+.pool-details-name{
+	color: #b4bcc3;
+	font-size: 18pt;
+	font-weight: 300;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.pool-details-info{
+	font-size: 18pt;
+	margin-top: 10px;
+	font-weight: 300;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.pool-details-long{
+	width: 80%;
+	display: block;
+	left: 10%;
+	text-align: left;
+}
+
+.pool-details-long .pool-details-name, .pool-details-long .pool-details-info{
+	overflow: initial;
+	text-overflow: initial;
+	white-space: normal;	
+}
+
+.info-head{
+	position: relative;
+	text-align: center;
+	margin-top: 30px;
+	font-weight: 400;
+	font-weight: 400;
+	color: #484848;
+	font-size: 18pt;
+	width: 80%;
+	left: 10%;
+	text-align: left;
+}
+
+.info-head span{
+	color: #b5bcc2;
+}
+
+.holding-pattern{
+	width: 80%;
+	position: relative;
+	left: 10%;
+	text-align: left;
+	font-size: 9pt;
+	margin-top: 30px;
+	border-collapse: collapse;
+}
+
+tr{
+	height: 23px;
+	line-height: 20px;
+	border-bottom: 1px solid #e0e0e0;
+}
+td, th{
+	border-bottom: 1px solid #e0e0e0;	
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 150px;
+}
+
+th{
+	color: #3856dc;
+	font-weight: 500;
+}
+
+tr{
+	color: #5e5e5e;
+}

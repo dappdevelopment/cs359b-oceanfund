@@ -1,300 +1,147 @@
-.profileHead{
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	transform: translate(-50%,-50%);
-	 background: -webkit-linear-gradient(45deg, #0335FF, #3EBEFF);
-	background: linear-gradient(45deg, #0335FF, #3EBEFF);
-	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	-webkit-font-smoothing: antialiased;
-	font-family: montserrat;
-	font-size: 22pt;
-	font-weight: 500;
-}
-.main{
-	position: relative;
-	width: 100%;
-	height: 150vh;
-	float: left;
-}
-.panelOne{
-	position: relative;
-	width: 30%;
-	height: 100%;
-	float: left;
-	box-sizing: border-box;
-	text-align: center;
-	border-right: 1px solid #DFECF4;
-}
-.panelTwo{
-	position: relative;
-	width: 70%;
-	height: 100%;
-	float: left;
-	box-sizing: border-box;
-}
-.name{
-	position: relative;
-	margin-top: 40px;
-	font-family: montserrat;
-	font-size: 22pt;
-	color: #434A4E;
-}
-.encode{
-	position: relative;
-	margin-top: 15px;
-	font-family: montserrat;
-	font-size: 8.5pt;
-	color: #434A4E;
-	opacity: 0.5;
-}
-.profDp{
-	position: relative;
-	margin-top: 15pt;
-	width: 50%;
-	border-radius: 100%;
-}
-.change{
-	position: relative;
-	margin-top: 10px;
-	font-family: montserrat;
-	font-size: 8.5pt;
-	color: #434A4E;
-	opacity: 0.5;
-}
-.withdrawHead{
-	position: relative;
-	margin-top: 50px;
-	font-family: montserrat;
-	color: #434A4E;
-	text-transform: uppercase;
-	letter-spacing: 2px;
-	opacity: 0.7;
-}
-.stored{
-	position: relative;
-	margin-top: 15pt;
-	font-family: montserrat;
-	color: #434A4E;
-	font-size: 22pt;
-}
-.withdrawButton{
-	position: relative;
-	margin: auto;
-	margin-top: 40px;
-	width: 240px;
-	height: 60px;
-	background-color: #40F1DA;
-	line-height: 60px;
-	text-align: center;
-	font-family: open sans;
-	letter-spacing: 1px;
-	color: #fff;
-	font-size: 12pt;
-	border-radius: 6px;
-	cursor: pointer;
-	text-transform: uppercase;
-	font-weight: 600;
-}
-.withdrawButton span{
-	font-family: raleway;
-	opacity: 0.5;
-	font-size: 16pt;
-}
-.firstDiv{
-	position: relative;
-	width: 100%;
-	height: 30%;
-	border-bottom: 1px solid #DFECF4;
-	float: left;
-	box-sizing: border-box;
-	text-align: center;
-}
-.secondDiv{
-	position: relative;
-	width: 100%;
-	height: 70%;
-	float: left;
-	box-sizing: border-box;
-	text-align: center;
-}
-.yourPool{
-	position: relative;
-	font-family: montserrat;
-	margin-top: 40px;
-	color: #434A4E;
-	text-transform: uppercase;
-	letter-spacing: 2px;
-	opacity: 0.7;
-	font-weight: 500;
-}
-.nonePool{
-	position: relative;
-	margin-top: 40px;
-	font-family: montserrat;
-	font-size: 22pt;
-	color: #434A4E;
-}
-.makePool{
-	position: relative;
-	margin: auto;
-	margin-top: 35px;
-	width: 290px;
-	height: 60px;
-	background-color: #135CF8;
-	line-height: 60px;
-	text-align: center;
-	font-family: open sans;
-	letter-spacing: 1px;
-	color: #fff;
-	font-size: 12pt;
-	border-radius: 6px;
-	cursor: pointer;
-	font-weight: 600;
-}
-.mkaePool span{
-	font-family: raleway;
-	opacity: 0.5;
-	font-size: 16pt;
-}
-.containerCard{
-	position: absolute;
-	/*left: 50%;*/
-	top: 55%;
-	transform: translateY(-50%);
-	width: auto;
-	box-sizing: border-box;
-	height: auto;	
-}
-.containerCard ul{
-	list-style: none;
-	padding-left: 155px;
-}
-.containerCard li{
+.left-panel, .right-panel{
 	position: relative;
 	display: inline-block;
-	float: left;
-	margin-right: 20px;
-	height: 400px;
-	width: 285px;
-	box-sizing: border-box;
-	border: 1px solid #DFECF4;
-	border-radius: 8px;
-	cursor: pointer;
+	vertical-align: top;
 }
-.pehla{
-	position: relative;
-	width: 100%;
-	height: 55%;
-	float: left;
-	background: url(../img/ocean.jpg) center center no-repeat;
-	/*background-size: cover;*/
-	box-sizing: border-box;
+
+.left-panel{
+	width: 28%;
+	margin-left: -2px;
 }
-.doosra{
-	position: relative;
-	width: 100%;
-	height: 45%;
-	float: left;
-	box-sizing: border-box;
-	text-align: left;
+
+.right-panel{
+	border-left: 2px solid #e4f0f7;
+	padding-bottom: 55px;
+	width: 72%;
+	text-align: center;
 }
-.numDiv{
-	position: relative;
-	width: 100%;
-	height: 50px;
-	border-bottom: 1px solid #DFECF4;
-	float: left;
-	box-sizing: border-box;
-	padding-left: 20px;
-	font-family: montserrat;
-	font-size: 17pt;
-	color: #2D98FF;
+
+.profile-sub-head{
+	color: #a4adb3;
+	font-size: 10pt;
 	font-weight: 500;
 	text-transform: uppercase;
-	line-height: 50px;
-	text-align: left;
-}
-.lvl{
-	position: absolute;
-	right: 20px;
-	top: 50%;
-	transform: translateY(-50%);
-	font-family: montserrat;
-	color: #434A4E;
-	opacity: 0.5;
-	text-transform: uppercase;
-	font-size: 10pt;
-}
-.ci{
-	position: relative;
-	top: 15px;
-	font-family: montserrat;
-	color: #434A4E;
-	padding-left: 30px;
-	font-size: 10.8pt;
-}
-.inf{
-	position: relative;
-	top: 25px;
-	font-family: montserrat;
-	color: #434A4E;
-	padding-left: 30px;
-	font-size: 10.8pt;
-}
-.inff{
-	position: relative;
-	top: 35px;
-	font-family: montserrat;
-	color: #434A4E;
-	padding-left: 30px;
-	font-size: 10pt;
-}
-.enco{
-	position: relative;
-	margin-top: 45px;
-	width: 100%;
-	height: 30px;
-	border-top: 1px solid #DFECF4;
-	float: left;
-	line-height: 30px;
-	font-family: montserrat;
-	color: #434A4E;
-	opacity: 0.5;
-	font-size: 9.5pt;
+	letter-spacing: 2px;
 	text-align: center;
+	border-top: 1px solid #dceaf3;
+	margin-top: 24px;
+	padding-top: 24px;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
-.pehla2{
-	position: relative;
-	width: 100%;
-	height: 55%;
-	float: left;
-	background: url(../img/cave.jpg) center center no-repeat;
-	/*background-size: cover;*/
+
+.user-name{
+	text-align: center;
+	margin-top: 23px;
+	font-weight: 400;
+	color: #50565a;
+	font-size: 18pt;
 	box-sizing: border-box;
+	padding-left: 10px;
+	padding-right: 10px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;	
 }
-.makeInv{
-	position: absolute;
-	width: 290px;
-	height: 60px;
-	background-color: #F8BE4C;
-	line-height: 60px;
+
+.user-id{
 	text-align: center;
-	font-family: open sans;
-	letter-spacing: 1px;
-	color: #fff;
-	font-size: 12pt;
-	border-radius: 6px;
-	cursor: pointer;
-	font-weight: 600;
-	bottom: 25px;
-	left: 50%;
-	transform: translateX(-50%);
+	color: #baceda;
+	font-size: 9pt;
+	text-decoration: underline;
+	font-weight: 300;
+	margin-top: 8px;
+	text-overflow: ellipsis;
+	box-sizing: border-box;
+	padding-left: 10px;
+	padding-right: 10px;
+	overflow: hidden;
+	white-space: nowrap;	
 }
-.makeInv span{
-	font-family: raleway;
-	opacity: 0.5;
-	font-size: 16pt;
+
+.user-image{
+	width: 35%;
+	display: block;
+	margin: auto;
+	border-radius: 100%;
+	margin-top: 25px;
+}
+
+.user-change-image{
+	display: block;	
+	text-align: center;
+	font-weight: 400;
+	font-size: 9pt;
+	color: #9fabb3;
+	text-decoration: underline;	
+	margin-top: 10px;
+	cursor: pointer;
+	transition: color 0.3s;
+}
+
+.image-panel-change:hover{
+	color: #444;
+}
+
+.user-funds{
+	text-align: center;
+	font-family: PT Sans Narrow;
+	font-size: 22pt;
+	margin-top: 20px;
+	color: #575757;
+	font-weight: 300;
+}
+
+#withdraw-funds{
+	display: block;
+	margin: auto;
+	margin-top: 30px;
+	width: 70%;
+	min-width: 100px;
+	padding: 0px;
+}
+
+#user-pools-head{
+	margin-top: 0px;
+	border-top: none;
+}
+
+.info-head{
+	text-align: center;
+	margin-top: 30px;
+	font-weight: 400;
+	font-weight: 400;
+	color: #484848;
+	font-size: 18pt;
+}
+
+#create-pool{
+	display: block;
+	margin: auto;
+	margin-top: 35px;
+}
+
+#investments-info-head span{
+	font-weight: 500;
+}
+
+.ui-pool{
+	display: inline-block;
+	margin-top: 45px;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+#pool-2 .ui-pool-name{
+	color: #fa6f5e;
+}
+
+#pool-2 .ui-pool-image{
+	background-image: url("../img/defaultBillboard2.png");
+}
+
+#make-investment{
+	display: block;
+	margin: auto;
+	margin-top: 50px;
 }
